@@ -51,10 +51,11 @@ bool comandos_rx()
       //String command = Serial.readStringUntil('\n');
       //Serial.println(chat);
 
+      //if (chat != null)
       comandos = "Msg:/" + chat;
     }
 
-    Serial.println(comandos);
+    //Serial.println(comandos);
 
     if (comandos.indexOf("Msg:/") >= 0)
     {
@@ -79,9 +80,20 @@ bool comandos_rx()
       else
       {
 
-        serializeJsonPretty(data_doc, Serial);
+        //serializeJsonPretty(data_doc, Serial);
         //serializeJson(data_doc, Serial);
-        Serial.println();
+        //Serial.println();
+
+        int led = data_doc["Led"];
+
+        if (led == 1){
+          digitalWrite(LED_OUT,1);
+          valor++;
+
+          Serial.printf("valor=%i&\n", valor);
+
+        } 
+        else  digitalWrite(LED_OUT,0);
 
         check = true;
 
