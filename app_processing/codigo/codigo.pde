@@ -28,7 +28,7 @@ void setup()
   //port.bufferUntil(linefeed); 
   port.bufferUntil(10); 
   
-  output = createWriter("temeratura_datos.txt"); //Creamos el archivo de texto, que es guardado en la carpeta del programa
+  output = createWriter("storage.txt"); //Creamos el archivo de texto, que es guardado en la carpeta del programa
    
   size(800, 400); //Creamos una ventana de 800 píxeles de anchura por 600 píxeles de altura 
 
@@ -53,21 +53,14 @@ void draw()
    
   //text("received: " + comandos, 10,50);  
   //Ponemos la imagen de nuestro logo
-  //imageMode(CENTER);//Esta función hace que las coordenadas de la imagne sean el centro de esta y no la esquina izquierda arriba
-  //PImage imagen=loadImage("logo.jpg");
-  //image(imagen,xlogo,ylogo,200,100);
- 
+  imageMode(CENTER);//Esta función hace que las coordenadas de la imagne sean el centro de esta y no la esquina izquierda arriba
+  PImage imagen=loadImage("logo.jpg");
+  image(imagen,xlogo,ylogo,170,100);
  
    //Visualizamos la temperatura con un texto
    text("Contador =",390,200);
    text(valor, 520, 200);
     
-   //Escribimos los datos de la temperatura con el tiempo (h/m/s) en el archivo de texto
-   //output.print(valor);
-   //output.print(hour( )+":");
-   //output.print(minute( )+":");
-   //output.println(second( ));
-   //output.println("");
     
   //Esfera color visualización temperatura
   float temp = map (valor, 0, 100, 0, 255);//Escalamos la temperatura donde maximo sea 100 y mínimo 0
@@ -83,9 +76,12 @@ void draw()
  
 void keyPressed() //Cuando se pulsa una tecla
 {
+  
+  println ("tecla: " + key);
+  
   if(key=='w'||key=='W')
   {
-        ylogo--; //El logo se deplaza hacia arriba
+        ylogo--; //El logo se dqweplaza hacia arriba
   }
   else if(key=='s'||key=='S')
   {
@@ -102,7 +98,7 @@ void keyPressed() //Cuando se pulsa una tecla
   //Pulsar la tecla E para salir del programa
   if(key=='e' || key=='E')
   {
-    output.flush(); // Escribe los datos restantes en el archivo
+    //output.flush(); // Escribe los datos restantes en el archivo
     output.close(); // Final del archivo
     exit();//Salimos del programa
   }
@@ -123,6 +119,7 @@ void serialEvent(Serial port) {
       
       print("Esp: ");
       println(JSON);
+      storage();
       
   port.clear();
   }

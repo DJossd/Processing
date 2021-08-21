@@ -67,3 +67,17 @@ void boton(){
   text(texto, 170, 270);
   
 }
+
+void storage(){
+  
+   //Escribimos los datos de la temperatura con el tiempo (h/m/s) en el archivo de texto
+   output.print(valor);
+   output.print(" - ");
+   output.print(hour( )+":");
+   output.print(minute( )+":");
+   output.println(second( ));
+
+   output.flush(); // Escribe los datos restantes en el archivo
+   println("Storage success");
+
+}
