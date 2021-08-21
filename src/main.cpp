@@ -10,7 +10,7 @@ bool comandos_rx();
 
 void setup() {
 
-pinMode(LET_OUT, OUTPUT);
+pinMode(LED_OUT, OUTPUT);
 
   Serial.begin(DEBUGER);
   SerialAT.begin(RASP_BAUD_RATE, SERIAL_8N1, RASP_RX, RASP_TX);
