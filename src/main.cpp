@@ -31,7 +31,7 @@ pinMode(LED_OUT, OUTPUT);
 }
 
 void loop() {
-  
+
   comandos_rx();
   cliente_udp();
 
@@ -92,13 +92,13 @@ bool comandos_rx()
         int led = data_doc["Led"];
 
         if (led == 1){
-          digitalWrite(LED_OUT,1);
+          led_status = 1; digitalWrite(LED_OUT,1);
           valor++;
 
           Serial.printf("valor=%i&\n", valor);
 
         } 
-        else  digitalWrite(LED_OUT,0);
+        else  { led_status = 0; digitalWrite(LED_OUT,0); }
 
         check = true;
 
