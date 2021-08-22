@@ -1,3 +1,4 @@
+/*
 int rquad=40; //Radio del quadrado
 int xquad=200;  //Posición X de rect
 int yquad=200;  //Posición Y de rect
@@ -81,3 +82,4 @@ void storage(){
    println("Storage success");
 
 }
+*/
