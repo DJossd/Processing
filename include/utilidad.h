@@ -1,3 +1,5 @@
+const char *ssid = "cubo RGB";    
+const char *password = "123456789"; 
 
 HardwareSerial SerialAT(1);
 

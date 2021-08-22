@@ -4,6 +4,8 @@
 
 #include "variables.h"
 #include "utilidad.h"
+#include "Coneccion_data.h"
+#include "Cliente_data.h"
 #include "Eeprom_data.h"
 
 bool comandos_rx();
@@ -23,12 +25,15 @@ pinMode(LED_OUT, OUTPUT);
   Serial.print("Timeout DEBUGER: ");
   Serial.println(Serial.getTimeout()); // print the new value
 
+  Wifi_udp();
   begin_Eeprom();
 
 }
 
 void loop() {
+  
   comandos_rx();
+  cliente_udp();
 
 }
 
